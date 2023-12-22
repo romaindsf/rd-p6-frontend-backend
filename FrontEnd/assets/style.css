@@ -214,6 +214,13 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
+#logIn a {
+	display: inline-block;
+	width: 100%;
+	margin: auto;
+	text-decoration: underline;
+	font-weight: 500;
+}
 
 footer nav ul {
 	display: flex;
