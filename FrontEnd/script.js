@@ -28,10 +28,10 @@ function removeStyleBtnAct() {
     listBtnFilter.forEach( (btn) =>{
         btn.classList.remove("btnActivated");
     })
-}
+};
 
 
-genererTravaux(projects)
+genererTravaux(projects);
 
 //button "Tous" is active at load
 let ActiveBtn = document.querySelector(".btnFilter:first-child").classList.add("btnActivated");
@@ -42,8 +42,8 @@ const btnFiltrerObjet = document.querySelector(".filterObjets");
 btnFiltrerObjet.addEventListener("click", () => {
     const categorieObjet = projects.filter(projet => projet.category.name == "Objets");
     //ajout du style seulement pour le bouton actif
-    removeStyleBtnAct()
-    btnFiltrerObjet.classList.add("btnActivated")
+    removeStyleBtnAct();
+    btnFiltrerObjet.classList.add("btnActivated");
     //mise à jour du DOM
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(categorieObjet);
@@ -52,8 +52,8 @@ btnFiltrerObjet.addEventListener("click", () => {
 const btnFiltrerAppartements = document.querySelector(".filterAppartements");
 btnFiltrerAppartements.addEventListener("click", () => {
     const categorieAppartements = projects.filter(projet => projet.category.name == "Appartements");
-    removeStyleBtnAct()
-    btnFiltrerAppartements.classList.add("btnActivated")
+    removeStyleBtnAct();
+    btnFiltrerAppartements.classList.add("btnActivated");
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(categorieAppartements);
 });
@@ -61,16 +61,16 @@ btnFiltrerAppartements.addEventListener("click", () => {
 const btnFiltrerHotelRestaurant = document.querySelector(".filterHotelRestaurant");
 btnFiltrerHotelRestaurant.addEventListener("click", () => {
     const categorieHotelRestaurant = projects.filter(projet => projet.category.name == "Hotels & restaurants");
-    removeStyleBtnAct()
-    btnFiltrerHotelRestaurant.classList.add("btnActivated")
+    removeStyleBtnAct();
+    btnFiltrerHotelRestaurant.classList.add("btnActivated");
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(categorieHotelRestaurant);
 });
 // catégorie Tous
 const btnResetFilter = document.querySelector(".filterAll");
 btnResetFilter.addEventListener("click", () => {
-    removeStyleBtnAct()
-    btnResetFilter.classList.add("btnActivated")
+    removeStyleBtnAct();
+    btnResetFilter.classList.add("btnActivated");
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(projects);
 });
