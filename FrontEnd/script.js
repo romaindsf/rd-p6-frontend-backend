@@ -28,7 +28,7 @@ genererTravaux(projects)
 const btnResetFilter = document.querySelector(".filterAll");
 btnResetFilter.addEventListener("click", () => {
     document.querySelector(".gallery").innerHTML = "";
-    genererTravaux(projects),
+    genererTravaux(projects);
 });
 //catégorie Objets
 const btnFiltrerObjet = document.querySelector(".filterObjets");
