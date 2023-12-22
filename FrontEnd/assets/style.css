@@ -144,10 +144,12 @@ li:hover {
 	background-color: #FFFFFF;
 }
 
-.btnFilter:hover {
+.btnFilter:hover,
+.btnActivated {
 	background-color: var(--main-color);
 	color: #FFFFFF;
 }
+
 .gallery {
 	width: 100%;
 	display: grid;
