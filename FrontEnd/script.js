@@ -22,3 +22,5 @@ function genererTravaux(projects) {
     }
 }
 genererTravaux(projects)
+
+//La possibilité de filtrer la galerie par catégorie de projet.

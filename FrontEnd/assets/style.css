@@ -47,6 +47,10 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+/* declare la variable couleur principal */
+:root {
+	--main-color: #1D6154
+  }
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -114,16 +118,35 @@ li:hover {
 #introduction article {
 	flex: 1
 }
-#introduction h2 {
-	margin-bottom: 1em;
-}
 
 #introduction p {
 	margin-bottom: 0.5em;
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	margin-bottom: 50px;
+}
+/* ajout styles boutons filtre */
+.filtres {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin: 50px 0;
+}
+.btnFilter {
+	padding: 9px 20px;
+	border-radius: 50px;
+	border: 1px solid var(--main-color);
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 16px;
+	color: var(--main-color);
+	background-color: #FFFFFF;
+}
+
+.btnFilter:hover {
+	background-color: var(--main-color);
+	color: #FFFFFF;
 }
 .gallery {
 	width: 100%;
