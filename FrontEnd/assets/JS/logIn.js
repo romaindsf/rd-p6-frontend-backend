@@ -14,13 +14,14 @@ async function attemptLogIn(event) {    //async pour utiliser await fetch dans l
             headers: {"Content-Type": "application/json"},
         });                         //écriture de la requête, deux arguments (fetch,{method, body, headers})
         if(attemptLogIn.status === 200) {   //si la requête est un succès :
-            window.location.href = "/FrontEnd/index.html";
+            window.location.href = "/FrontEnd/index.html";  // rediriger vers la page d'acceuil
+            window.localStorage.setItem("mesLogs", logInfo) //sauvergarde des bons identifiants
         } else {
             console.log("identifiant ou mot de passe incorrecte")
             document.querySelector("[name=email]")
             .classList.add("invalid")
             document.querySelector("[name=password]")
-            .classList.add("invalid")       //indicateurs d'erreeur (message à rajouter)
+            .classList.add("invalid")       //indicateurs d'erreur (message à rajouter)
         }
 }
 
