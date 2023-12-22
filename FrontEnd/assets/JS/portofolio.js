@@ -95,8 +95,3 @@ btnResetFilter.addEventListener("click", () => {
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(projects);
 });
-
-
-
-//Formulaire
-
