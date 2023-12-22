@@ -1,7 +1,10 @@
 //Récupération des projets de l'architecte depuis l'API
 let response = await fetch("http://localhost:5678/api/works");
 let projects = await response.json();
+
+
 //Afficher les travaux depuis le back-end
+
 function genererTravaux(projects) {
     for (let i = 0; i< projects.length; i++) {
         const figure = projects[i];
@@ -22,7 +25,9 @@ function genererTravaux(projects) {
     }
 }
 
+
 //fonction pour enlever la class .btnActivated
+
 function removeStyleBtnAct() {
     const listBtnFilter = document.querySelectorAll(".btnFilter");
     listBtnFilter.forEach( (btn) =>{
@@ -33,11 +38,18 @@ function removeStyleBtnAct() {
 
 genererTravaux(projects);
 
+
 //button "Tous" is active at load
+
 let ActiveBtn = document.querySelector(".btnFilter:first-child").classList.add("btnActivated");
 
+
+
 //La possibilité de filtrer la galerie par catégorie de projet.
+
+
 //catégorie Objets
+
 const btnFiltrerObjet = document.querySelector(".filterObjets");
 btnFiltrerObjet.addEventListener("click", () => {
     const categorieObjet = projects.filter(projet => projet.category.name == "Objets");
@@ -48,7 +60,10 @@ btnFiltrerObjet.addEventListener("click", () => {
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(categorieObjet);
 });
+
+
 //catégorie Appartements
+
 const btnFiltrerAppartements = document.querySelector(".filterAppartements");
 btnFiltrerAppartements.addEventListener("click", () => {
     const categorieAppartements = projects.filter(projet => projet.category.name == "Appartements");
@@ -57,7 +72,10 @@ btnFiltrerAppartements.addEventListener("click", () => {
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(categorieAppartements);
 });
+
+
 //catégorie Hôtels & Restaurant
+
 const btnFiltrerHotelRestaurant = document.querySelector(".filterHotelRestaurant");
 btnFiltrerHotelRestaurant.addEventListener("click", () => {
     const categorieHotelRestaurant = projects.filter(projet => projet.category.name == "Hotels & restaurants");
@@ -66,7 +84,10 @@ btnFiltrerHotelRestaurant.addEventListener("click", () => {
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(categorieHotelRestaurant);
 });
+
+
 // catégorie Tous
+
 const btnResetFilter = document.querySelector(".filterAll");
 btnResetFilter.addEventListener("click", () => {
     removeStyleBtnAct();
@@ -74,3 +95,8 @@ btnResetFilter.addEventListener("click", () => {
     document.querySelector(".gallery").innerHTML = "";
     genererTravaux(projects);
 });
+
+
+
+//Formulaire
+
