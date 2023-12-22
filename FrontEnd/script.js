@@ -24,3 +24,24 @@ function genererTravaux(projects) {
 genererTravaux(projects)
 
 //La possibilité de filtrer la galerie par catégorie de projet.
+//catégorie Objets
+const btnFiltrerObjet = document.querySelector(".filterObjets");
+btnFiltrerObjet.addEventListener("click", () => {
+    const categorieObjet = projects.filter(projet => projet.category.name == "Objets");
+    document.querySelector(".gallery").innerHTML = "";
+    genererTravaux(categorieObjet)
+});
+//catégorie Appartements
+const btnFiltrerAppartements = document.querySelector(".filterAppartements");
+btnFiltrerAppartements.addEventListener("click", () => {
+    const categorieAppartements = projects.filter(projet => projet.category.name == "Appartements");
+    document.querySelector(".gallery").innerHTML = "";
+    genererTravaux(categorieAppartements)
+});
+//catégorie Hôtels & Restaurant
+const btnFiltrerHotelRestaurant = document.querySelector(".filterHotelRestaurant");
+btnFiltrerHotelRestaurant.addEventListener("click", () => {
+    const categorieHotelRestaurant = projects.filter(projet => projet.category.name == "Hotels & restaurants");
+    document.querySelector(".gallery").innerHTML = "";
+    genererTravaux(categorieHotelRestaurant)
+});
