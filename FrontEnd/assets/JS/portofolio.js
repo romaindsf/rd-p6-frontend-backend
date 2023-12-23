@@ -34,9 +34,9 @@ genererTravaux(projects);
 //bouton filtres pour afficher par catégories
 
 //ajoute class data-id 1, 2, 3 aux boutons filtres
-const btnCategories = document.querySelectorAll(".filter")
-for( let i = 0; i < btnCategories.length; i++) {
-    btnCategories[i].dataset.id = i + 1;
+const btnCategories = document.querySelectorAll(".btn")
+for( let i = 1; i < btnCategories.length; i++) {
+    btnCategories[i].dataset.id = i;
 }
 
 //ajout event listenner
