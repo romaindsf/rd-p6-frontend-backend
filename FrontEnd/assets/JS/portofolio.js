@@ -1,10 +1,10 @@
-    //Récupération des projets de l'architecte depuis l'API
-    const responseWorks = await fetch("http://localhost:5678/api/works");
-    const projects = await responseWorks.json();
-    const responseCategories = await fetch("http://localhost:5678/api/categories");
-    const categories = await responseCategories.json();
+//Récupération des projets de l'architecte depuis l'API
+const responseWorks = await fetch("http://localhost:5678/api/works");
+const projects = await responseWorks.json();
+const responseCategories = await fetch("http://localhost:5678/api/categories");
+const categories = await responseCategories.json();
 
-//déclaration des varaibles globales
+//Déclaration des variables globales
 const divGallery = document.querySelector(".gallery");
 const btnCategories = document.querySelectorAll(".btn");
 
@@ -24,7 +24,7 @@ function genererTravaux(projects) {
 
 genererTravaux(projects);
 
-//boutons filtres
+//Boutons filtres
 const listProjet = document.querySelectorAll(".gallery figure")
 for(let i = 1; i < btnCategories.length; i++) {
     btnCategories[i].dataset.id = categories[i - 1].id;
