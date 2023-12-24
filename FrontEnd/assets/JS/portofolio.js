@@ -6,7 +6,7 @@
 
 //déclaration des varaibles globales
 const divGallery = document.querySelector(".gallery");
-const btnCategories = document.querySelectorAll(".btn")
+const btnCategories = document.querySelectorAll(".btn");
 
 function genererTravaux(projects) {
     for (let i = 0; i< projects.length; i++) {
@@ -19,7 +19,7 @@ function genererTravaux(projects) {
         divGallery.appendChild(projetElement);
         projetElement.appendChild(imgElement);
         projetElement.appendChild(titleElement);
-    }
+    };
 };
 
 genererTravaux(projects);
@@ -33,14 +33,14 @@ for(let i = 1; i < btnCategories.length; i++) {
             projet.style.display = "block";
             if(event.target.dataset.id != projet.dataset.category) {
                 projet.style.display = "none";
-            }
+            };
         });
-    })
+    });
 };
 
-const btnAll = document.querySelector(".filtres .btn:first-child")
+const btnAll = document.querySelector(".filtres .btn:first-child");
 btnAll.addEventListener("click", () =>{
     listProjet.forEach(projet => {
         projet.style.display = "block";
     });
-})
+});
