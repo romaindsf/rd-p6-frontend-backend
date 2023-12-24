@@ -14,6 +14,8 @@ function genererTravaux(projects) {
         
         // Création d’une balise dédiée à un projet
         const projetElement = document.createElement("figure");
+        //Chaque element <figure> poosède une classe data-category
+        //égale à l'id catégory de l'objet dans le fichier JSON de l'api
         projetElement.dataset.category = projects[i].category.id;
         //remplis <figure> du contenu dédié (img & figcaption)
         const imgElement = document.createElement("img");
@@ -32,7 +34,10 @@ genererTravaux(projects);
 
 //boutons filtres pour afficher par catégories
 
+//Création d'une liste contenant tous les boutons
 const btnCategories = document.querySelectorAll(".btn")
+//Création d'une liste contenant tous les <figures> du portfolio
+const listProjet = document.querySelectorAll("figure")
 
 //ajout de data-id unique aux 3 boutons filtres
 //égaux à leurs catégories dédiées
@@ -40,12 +45,13 @@ for(let i = 1; i < btnCategories.length; i++) {
     btnCategories[i].dataset.id = categories[i - 1].id;
     //ajout event listener
     btnCategories[i].addEventListener("click", (event) => {
-        const listProjet = document.querySelectorAll("figure")
-        console.log(listProjet)
-        //si le data-id du bouton pressé a une id différente des id des projets
         listProjet.forEach(projet => {
+            //Dans un premier temps tous les projets sont visibles
+            projet.style.display = "block";
+            //pourchaque projet (<figures>) ; si l'id du bouton clique
+            //est différente de la valeur de la classe data-category
             if(event.target.dataset.id != projet.dataset.category) {
-                console.log("hide!");
+                //le projet est caché
                 projet.style.display = "none";
             }
         });
