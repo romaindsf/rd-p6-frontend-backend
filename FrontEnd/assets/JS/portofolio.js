@@ -14,6 +14,7 @@ function genererTravaux(projects) {
         
         // Création d’une balise dédiée à un projet
         const projetElement = document.createElement("figure");
+        projetElement.dataset.category = projects[i].category.id;
         //remplis <figure> du contenu dédié (img & figcaption)
         const imgElement = document.createElement("img");
         imgElement.src = projects[i].imageUrl;
@@ -42,10 +43,10 @@ for(let i = 1; i < btnCategories.length; i++) {
         const listProjet = document.querySelectorAll("figure")
         console.log(listProjet)
         //si le data-id du bouton pressé a une id différente des id des projets
-        listProjet.forEach(element => {
-            console.log(element.category.id)
-            if(event.target.dataset.id != element.category.id) {
-                console.log("hide!")
+        listProjet.forEach(projet => {
+            if(event.target.dataset.id != projet.dataset.category) {
+                console.log("hide!");
+                projet.style.display = "none";
             }
         });
     })
