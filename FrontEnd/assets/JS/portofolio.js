@@ -48,7 +48,7 @@ for(let i = 1; i < btnCategories.length; i++) {
         listProjet.forEach(projet => {
             //Dans un premier temps tous les projets sont visibles
             projet.style.display = "block";
-            //pourchaque projet (<figures>) ; si l'id du bouton clique
+            //pour chaque projet (<figures>) ; si l'id du bouton cliqué
             //est différente de la valeur de la classe data-category
             if(event.target.dataset.id != projet.dataset.category) {
                 //le projet est caché
@@ -57,6 +57,13 @@ for(let i = 1; i < btnCategories.length; i++) {
         });
     })
 };
+//Au tour du bouton "Tous"
+const btnAll = document.querySelector(".filtres .btn:first-child")
+btnAll.addEventListener("click", () =>{
+    listProjet.forEach(projet => {
+        projet.style.display = "block";
+    });
+})
 
 /*
 projects.forEach(Element => {
