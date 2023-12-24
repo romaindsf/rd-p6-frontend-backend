@@ -1,97 +1,46 @@
-//Récupération des projets de l'architecte depuis l'API
-let response = await fetch("http://localhost:5678/api/works");
-let projects = await response.json();
+    //Récupération des projets de l'architecte depuis l'API
+    const responseWorks = await fetch("http://localhost:5678/api/works");
+    const projects = await responseWorks.json();
+    const responseCategories = await fetch("http://localhost:5678/api/categories");
+    const categories = await responseCategories.json();
 
-
-//Afficher les travaux depuis le back-end
+//déclaration des varaibles globales
+const divGallery = document.querySelector(".gallery");
+const btnCategories = document.querySelectorAll(".btn");
 
 function genererTravaux(projects) {
     for (let i = 0; i< projects.length; i++) {
-        const figure = projects[i];
-        // Récupération de l'élément du DOM qui accueillera les fiches
-        const divGallery = document.querySelector(".gallery");
-        // Création d’une balise dédiée à un projet
         const projetElement = document.createElement("figure");
-        projetElement.dataset.id = projects[i].id
-        //remplis <figure> du contenu dédié (img & figcaption)
+        projetElement.dataset.category = projects[i].category.id;
         const imgElement = document.createElement("img");
-        imgElement.src = figure.imageUrl;
+        imgElement.src = projects[i].imageUrl;
         const titleElement = document.createElement("figcaption");
-        titleElement.textContent = figure.title;
-        //Rattachement des balises crée à l'élément parent
+        titleElement.textContent = projects[i].title;
         divGallery.appendChild(projetElement);
         projetElement.appendChild(imgElement);
         projetElement.appendChild(titleElement);
-    }
-}
-
-
-//fonction pour enlever la class .btnActivated
-
-function removeStyleBtnAct() {
-    const listBtnFilter = document.querySelectorAll(".btnFilter");
-    listBtnFilter.forEach( (btn) =>{
-        btn.classList.remove("btnActivated");
-    })
+    };
 };
-
 
 genererTravaux(projects);
 
+//boutons filtres
+const listProjet = document.querySelectorAll(".gallery figure")
+for(let i = 1; i < btnCategories.length; i++) {
+    btnCategories[i].dataset.id = categories[i - 1].id;
+    btnCategories[i].addEventListener("click", (event) => {
+        listProjet.forEach(projet => {
+            projet.style.display = "block";
+            if(event.target.dataset.id != projet.dataset.category) {
+                projet.style.display = "none";
+            };
+        });
+    });
+};
 
-//button "Tous" is active at load
-
-let ActiveBtn = document.querySelector(".btnFilter:first-child").classList.add("btnActivated");
-
-
-
-//La possibilité de filtrer la galerie par catégorie de projet.
-
-
-//catégorie Objets
-
-const btnFiltrerObjet = document.querySelector(".filterObjets");
-btnFiltrerObjet.addEventListener("click", () => {
-    const categorieObjet = projects.filter(projet => projet.category.name == "Objets");
-    //ajout du style seulement pour le bouton actif
-    removeStyleBtnAct();
-    btnFiltrerObjet.classList.add("btnActivated");
-    //mise à jour du DOM
-    document.querySelector(".gallery").innerHTML = "";
-    genererTravaux(categorieObjet);
-});
-
-
-//catégorie Appartements
-
-const btnFiltrerAppartements = document.querySelector(".filterAppartements");
-btnFiltrerAppartements.addEventListener("click", () => {
-    const categorieAppartements = projects.filter(projet => projet.category.name == "Appartements");
-    removeStyleBtnAct();
-    btnFiltrerAppartements.classList.add("btnActivated");
-    document.querySelector(".gallery").innerHTML = "";
-    genererTravaux(categorieAppartements);
-});
-
-
-//catégorie Hôtels & Restaurant
-
-const btnFiltrerHotelRestaurant = document.querySelector(".filterHotelRestaurant");
-btnFiltrerHotelRestaurant.addEventListener("click", () => {
-    const categorieHotelRestaurant = projects.filter(projet => projet.category.name == "Hotels & restaurants");
-    removeStyleBtnAct();
-    btnFiltrerHotelRestaurant.classList.add("btnActivated");
-    document.querySelector(".gallery").innerHTML = "";
-    genererTravaux(categorieHotelRestaurant);
-});
-
-
-// catégorie Tous
-
-const btnResetFilter = document.querySelector(".filterAll");
-btnResetFilter.addEventListener("click", () => {
-    removeStyleBtnAct();
-    btnResetFilter.classList.add("btnActivated");
-    document.querySelector(".gallery").innerHTML = "";
-    genererTravaux(projects);
+const btnAll = document.querySelector(".filtres .btn:first-child");
+btnAll.addEventListener("click", () =>{
+    listProjet.forEach(projet => {
+        projet.style.display = "block";
+    });
 });
