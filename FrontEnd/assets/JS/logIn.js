@@ -7,17 +7,20 @@ async function attemptLogIn(event) {    //async pour utiliser await fetch dans l
         email: event.target.querySelector("[name=email]").value,
         password: event.target.querySelector("[name=password]").value,
         };                              //récupération des données entrée
-        const chargeUtile = JSON.stringify(logInfo);    //conversion objet JS en JSON string
         const attemptLogIn = await fetch("http://localhost:5678/api/users/login", {
             method: "POST",
-            body: chargeUtile,
+            body: JSON.stringify(logInfo),
             headers: {"Content-Type": "application/json"},
         });                         //écriture de la requête, deux arguments (fetch,{method, body, headers})
         if(attemptLogIn.status === 200) {   //si la requête est un succès :
+            const correctLogIn = await attemptLogIn.json();
+            const storedId = JSON.stringify(correctLogIn.userId);
+            window.localStorage.setItem("logId", storedId); //sauvergarde des bons identifiants
+            const storedToken = JSON.stringify(correctLogIn.token);
+            window.localStorage.setItem("token", storedToken);
             window.location.href = "/FrontEnd/index.html";  // rediriger vers la page d'acceuil
-            window.localStorage.setItem("mesLogs", logInfo) //sauvergarde des bons identifiants
         } else {
-            console.log("identifiant ou mot de passe incorrecte")
+            console.log("Erreur dans l’identifiant ou le mot de passe")
             document.querySelector("[name=email]")
             .classList.add("invalid")
             document.querySelector("[name=password]")

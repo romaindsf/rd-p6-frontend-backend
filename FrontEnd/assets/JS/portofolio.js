@@ -7,6 +7,7 @@ const categories = await responseCategories.json();
 //Déclaration des variables globales
 const divGallery = document.querySelector(".gallery");
 const btnCategories = document.querySelectorAll(".btn");
+let loggedId = window.localStorage.getItem("logId");
 
 function genererTravaux(projects) {
     for (let i = 0; i< projects.length; i++) {
@@ -20,6 +21,41 @@ function genererTravaux(projects) {
         projetElement.appendChild(imgElement);
         projetElement.appendChild(titleElement);
     };
+};
+
+function afficherPopup () {
+    document.querySelector(".popupBackground")
+        .classList.add("active");
+}
+function cacherPopup() {
+    let popupBackground = document.querySelector(".popupBackground")
+    popupBackground.classList.remove("active")
+}
+
+//<a href="#"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
+//Am i loggedIn?
+if (loggedId != null) {
+    //affichage de logout quand on est connecté
+    const logIn = document.querySelector('nav a[href="./assets/login.html"]');
+    logIn.innerHTML = `<a href=#>logout</a>`;
+    logIn.addEventListener("click", ()=> {
+        window.localStorage.removeItem("logId", "token");
+        location.reload();
+    });
+    //affichage de link "modifier"
+    const linkModifs = document.createElement("a");
+    linkModifs.innerHTML += `<a><i class="fa-regular fa-pen-to-square"></i>modifier</a>`;
+    linkModifs.href = "#";
+    const mesProjets = document.querySelector("#portfolio")
+    mesProjets.appendChild(linkModifs);
+    linkModifs.addEventListener ("click", () => {
+        afficherPopup()
+    })
+
+    //suppression des boutons filtres
+    btnCategories.forEach(button => {
+        button.style.display = "none";
+    });
 };
 
 genererTravaux(projects);
@@ -44,3 +80,18 @@ btnAll.addEventListener("click", () =>{
         projet.style.display = "block";
     });
 });
+/*
+//pop up
+function afficherPopup() {
+    const modifier = document.querySelector("#portfolio > a");
+    modifier.addEventListener("click", () => {
+        modifier.classList.add("aaaaaaaaaaaaaaa")
+        //const popup = document.querySelector(".popupBackground");
+        //popup.classList.add("peekaboo");
+    })
+}
+function cacherPopup() {
+    let popupBackground = document.querySelector(".popupBackground")
+    popupBackground.classList.remove("active")
+}
+*/
