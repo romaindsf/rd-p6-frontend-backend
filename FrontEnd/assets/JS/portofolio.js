@@ -26,7 +26,11 @@ function genererTravaux(projects) {
 //Am i loggedIn?
 if (loggedId != null) {
     const logIn = document.querySelector('nav a[href="./assets/login.html"]');
-    logIn.innerHTML = `<a href=#>profil n°${window.localStorage.getItem("logId")}</a>`;
+    logIn.innerHTML = `<a href=#>logout</a>`;
+    logIn.addEventListener("click", ()=> {
+        window.localStorage.removeItem("logId", "token");
+        location.reload();
+    });
 };
 
 genererTravaux(projects);

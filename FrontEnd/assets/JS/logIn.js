@@ -20,7 +20,7 @@ async function attemptLogIn(event) {    //async pour utiliser await fetch dans l
             window.localStorage.setItem("token", storedToken);
             window.location.href = "/FrontEnd/index.html";  // rediriger vers la page d'acceuil
         } else {
-            console.log("identifiant ou mot de passe incorrecte")
+            console.log("Erreur dans l’identifiant ou le mot de passe")
             document.querySelector("[name=email]")
             .classList.add("invalid")
             document.querySelector("[name=password]")
