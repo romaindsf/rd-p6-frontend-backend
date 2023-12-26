@@ -14,7 +14,10 @@ async function attemptLogIn(event) {    //async pour utiliser await fetch dans l
         });                         //écriture de la requête, deux arguments (fetch,{method, body, headers})
         if(attemptLogIn.status === 200) {   //si la requête est un succès :
             const correctLogIn = await attemptLogIn.json();
-            window.localStorage.setItem("mesLogs", correctLogIn.token) //sauvergarde des bons identifiants
+            const storedId = JSON.stringify(correctLogIn.userId);
+            window.localStorage.setItem("logId", storedId); //sauvergarde des bons identifiants
+            const storedToken = JSON.stringify(correctLogIn.token);
+            window.localStorage.setItem("token", storedToken);
             window.location.href = "/FrontEnd/index.html";  // rediriger vers la page d'acceuil
         } else {
             console.log("identifiant ou mot de passe incorrecte")

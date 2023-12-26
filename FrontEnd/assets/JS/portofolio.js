@@ -7,6 +7,7 @@ const categories = await responseCategories.json();
 //Déclaration des variables globales
 const divGallery = document.querySelector(".gallery");
 const btnCategories = document.querySelectorAll(".btn");
+let loggedId = window.localStorage.getItem("logId");
 
 function genererTravaux(projects) {
     for (let i = 0; i< projects.length; i++) {
@@ -22,10 +23,13 @@ function genererTravaux(projects) {
     };
 };
 
+//Am i loggedIn?
+if (loggedId != null) {
+    const logIn = document.querySelector('nav a[href="./assets/login.html"]');
+    logIn.innerHTML = `profil n°<a href=#>${window.localStorage.getItem("logId")}</a>`;
+};
+
 genererTravaux(projects);
-
-//logIn
-
 
 //Boutons filtres
 const listProjet = document.querySelectorAll(".gallery figure")
