@@ -30,11 +30,11 @@ if (loggedId != null) {
     const linkModifs = document.createElement("a");
     const iconModifs = document.createElement("i");
     iconModifs.className = "fa-regular fa-pen-to-square";
-    linkModifs.innerText = "modifier";
+    iconModifs.innerText = "modifier";
     linkModifs.appendChild(iconModifs);
     linkModifs.href = "#";
     const mesProjets = document.querySelector("#portfolio h2")
-    mesProjets.insertAdjacentElement("afterend", linkModifs);
+    mesProjets.appendChild(linkModifs);
     logIn.addEventListener("click", ()=> {
         window.localStorage.removeItem("logId", "token");
         location.reload();
