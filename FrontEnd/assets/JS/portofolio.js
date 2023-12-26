@@ -25,20 +25,19 @@ function genererTravaux(projects) {
 //<a href="#"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
 //Am i loggedIn?
 if (loggedId != null) {
+    //affichage de logout quand on est connecté
     const logIn = document.querySelector('nav a[href="./assets/login.html"]');
     logIn.innerHTML = `<a href=#>logout</a>`;
-    const linkModifs = document.createElement("a");
-    const iconModifs = document.createElement("i");
-    iconModifs.className = "fa-regular fa-pen-to-square";
-    iconModifs.innerText = "modifier";
-    linkModifs.appendChild(iconModifs);
-    linkModifs.href = "#";
-    const mesProjets = document.querySelector("#portfolio h2")
-    mesProjets.appendChild(linkModifs);
     logIn.addEventListener("click", ()=> {
         window.localStorage.removeItem("logId", "token");
         location.reload();
     });
+    //affichage de link "modifier"
+    const linkModifs = document.createElement("a");
+    linkModifs.innerHTML += `<a><i class="fa-regular fa-pen-to-square"></i>modifier</a>`;
+    linkModifs.href = "#";
+    const mesProjets = document.querySelector("#portfolio")
+    mesProjets.appendChild(linkModifs);
 };
 
 genererTravaux(projects);
