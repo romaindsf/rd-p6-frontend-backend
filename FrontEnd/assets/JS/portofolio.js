@@ -22,6 +22,16 @@ function genererTravaux(projects) {
         projetElement.appendChild(titleElement);
     };
 };
+
+function afficherPopup () {
+    document.querySelector(".popupBackground")
+        .classList.add("active");
+}
+function cacherPopup() {
+    let popupBackground = document.querySelector(".popupBackground")
+    popupBackground.classList.remove("active")
+}
+
 //<a href="#"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
 //Am i loggedIn?
 if (loggedId != null) {
@@ -38,6 +48,14 @@ if (loggedId != null) {
     linkModifs.href = "#";
     const mesProjets = document.querySelector("#portfolio")
     mesProjets.appendChild(linkModifs);
+    linkModifs.addEventListener ("click", () => {
+        afficherPopup()
+    })
+
+    //suppression des boutons filtres
+    btnCategories.forEach(button => {
+        button.style.display = "none";
+    });
 };
 
 genererTravaux(projects);
@@ -62,3 +80,18 @@ btnAll.addEventListener("click", () =>{
         projet.style.display = "block";
     });
 });
+/*
+//pop up
+function afficherPopup() {
+    const modifier = document.querySelector("#portfolio > a");
+    modifier.addEventListener("click", () => {
+        modifier.classList.add("aaaaaaaaaaaaaaa")
+        //const popup = document.querySelector(".popupBackground");
+        //popup.classList.add("peekaboo");
+    })
+}
+function cacherPopup() {
+    let popupBackground = document.querySelector(".popupBackground")
+    popupBackground.classList.remove("active")
+}
+*/
