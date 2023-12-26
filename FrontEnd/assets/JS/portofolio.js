@@ -22,11 +22,19 @@ function genererTravaux(projects) {
         projetElement.appendChild(titleElement);
     };
 };
-
+//<a href="#"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
 //Am i loggedIn?
 if (loggedId != null) {
     const logIn = document.querySelector('nav a[href="./assets/login.html"]');
     logIn.innerHTML = `<a href=#>logout</a>`;
+    const linkModifs = document.createElement("a");
+    const iconModifs = document.createElement("i");
+    iconModifs.className = "fa-regular fa-pen-to-square";
+    linkModifs.innerText = "modifier";
+    linkModifs.appendChild(iconModifs);
+    linkModifs.href = "#";
+    const mesProjets = document.querySelector("#portfolio h2")
+    mesProjets.insertAdjacentElement("afterend", linkModifs);
     logIn.addEventListener("click", ()=> {
         window.localStorage.removeItem("logId", "token");
         location.reload();
