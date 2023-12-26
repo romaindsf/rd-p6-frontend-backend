@@ -26,7 +26,7 @@ function genererTravaux(projects) {
 //Am i loggedIn?
 if (loggedId != null) {
     const logIn = document.querySelector('nav a[href="./assets/login.html"]');
-    logIn.innerHTML = `profil n°<a href=#>${window.localStorage.getItem("logId")}</a>`;
+    logIn.innerHTML = `<a href=#>profil n°${window.localStorage.getItem("logId")}</a>`;
 };
 
 genererTravaux(projects);
