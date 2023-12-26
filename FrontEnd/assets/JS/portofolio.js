@@ -24,6 +24,9 @@ function genererTravaux(projects) {
 
 genererTravaux(projects);
 
+//logIn
+
+
 //Boutons filtres
 const listProjet = document.querySelectorAll(".gallery figure")
 for(let i = 1; i < btnCategories.length; i++) {
