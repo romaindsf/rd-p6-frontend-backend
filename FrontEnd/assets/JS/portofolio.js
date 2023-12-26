@@ -1,3 +1,5 @@
+//import de fonction provenant de fichier Js extérieurs
+import { SucessfulLogin } from "./f_SuccessfulLogin";
 //Récupération des projets de l'architecte depuis l'API
 const responseWorks = await fetch("http://localhost:5678/api/works");
 const projects = await responseWorks.json();
@@ -32,31 +34,7 @@ function cacherPopup() {
     popupBackground.classList.remove("active")
 }
 
-//<a href="#"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
-//Am i loggedIn?
-if (loggedId != null) {
-    //affichage de logout quand on est connecté
-    const logIn = document.querySelector('nav a[href="./assets/login.html"]');
-    logIn.innerHTML = `<a href=#>logout</a>`;
-    logIn.addEventListener("click", ()=> {
-        window.localStorage.removeItem("logId", "token");
-        location.reload();
-    });
-    //affichage de link "modifier"
-    const linkModifs = document.createElement("a");
-    linkModifs.innerHTML += `<a><i class="fa-regular fa-pen-to-square"></i>modifier</a>`;
-    linkModifs.href = "#";
-    const mesProjets = document.querySelector("#portfolio")
-    mesProjets.appendChild(linkModifs);
-    linkModifs.addEventListener ("click", () => {
-        afficherPopup()
-    })
-
-    //suppression des boutons filtres
-    btnCategories.forEach(button => {
-        button.style.display = "none";
-    });
-};
+SucessfulLogin();
 
 genererTravaux(projects);
 
