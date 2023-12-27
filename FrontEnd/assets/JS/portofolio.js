@@ -9,6 +9,7 @@ const divGallery = document.querySelector(".gallery");
 const btnCategories = document.querySelectorAll(".btn");
 let loggedId = window.localStorage.getItem("logId");
 
+//fonctions
 function genererTravaux(projects) {
     for (let i = 0; i< projects.length; i++) {
         const projetElement = document.createElement("figure");
@@ -23,17 +24,6 @@ function genererTravaux(projects) {
     };
 };
 
-function afficherPopup () {
-    document.querySelector(".popupBackground")
-        .classList.add("active");
-}
-function cacherPopup() {
-    let popupBackground = document.querySelector(".popupBackground")
-    popupBackground.classList.remove("active")
-}
-
-//<a href="#"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
-//Am i loggedIn?
 if (loggedId != null) {
     //affichage de logout quand on est connecté
     const logIn = document.querySelector('nav a[href="./assets/login.html"]');
@@ -44,12 +34,12 @@ if (loggedId != null) {
     });
     //affichage de link "modifier"
     const linkModifs = document.createElement("a");
-    linkModifs.innerHTML += `<a><i class="fa-regular fa-pen-to-square"></i>modifier</a>`;
+    linkModifs.innerHTML += `<i class="fa-regular fa-pen-to-square"></i>modifier`;
     linkModifs.href = "#";
+    linkModifs.classList.add("btnOpenModal")
     const mesProjets = document.querySelector("#portfolio")
     mesProjets.appendChild(linkModifs);
     linkModifs.addEventListener ("click", () => {
-        afficherPopup()
     })
 
     //suppression des boutons filtres
@@ -80,18 +70,29 @@ btnAll.addEventListener("click", () =>{
         projet.style.display = "block";
     });
 });
-/*
-//pop up
-function afficherPopup() {
-    const modifier = document.querySelector("#portfolio > a");
-    modifier.addEventListener("click", () => {
-        modifier.classList.add("aaaaaaaaaaaaaaa")
-        //const popup = document.querySelector(".popupBackground");
-        //popup.classList.add("peekaboo");
-    })
-}
-function cacherPopup() {
-    let popupBackground = document.querySelector(".popupBackground")
-    popupBackground.classList.remove("active")
-}
-*/
+
+//ajout de la fenêtre modal
+const popupBackground = document.querySelector(".popupBackground");
+const btnOpenModal = document.querySelector(".btnOpenModal");
+const iconCloseModal = document.querySelector(".close_modal");
+
+btnOpenModal.addEventListener("click", () => {
+    popupBackground.style.display = "block";
+});
+
+iconCloseModal.addEventListener("click", () => {
+    popupBackground.style.display = "none";
+});
+
+//générer les miniatures dans le grid
+const gridThumbnail = document.querySelector(".grid_thumbnail")
+for (let i = 0; i< projects.length; i++) {
+    const gridElement = document.createElement("div");
+    const imgElement = document.createElement("img");
+    imgElement.src = projects[i].imageUrl;
+    const trashCan = document.createElement("i")
+    trashCan.classList.add("fa-regular", "fa-trash-can");
+    gridThumbnail.appendChild(gridElement);
+    gridElement.appendChild(imgElement);
+    gridElement.appendChild(trashCan)
+};
