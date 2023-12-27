@@ -92,6 +92,13 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+h3{
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 26px;
+}
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -255,6 +262,8 @@ footer nav ul {
 .popupBackground {
 	display: none;
 	position: fixed;
+	top: 0;
+	left: 0;
 	height: 100vh;
 	width: 100vw;
 	background-color: #0000004D;
@@ -265,6 +274,10 @@ footer nav ul {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 32px 36px;
+	border-radius: 10px;
+	text-align: center;
 }
 
 .active {
