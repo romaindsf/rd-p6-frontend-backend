@@ -83,3 +83,16 @@ btnOpenModal.addEventListener("click", () => {
 iconCloseModal.addEventListener("click", () => {
     popupBackground.style.display = "none";
 });
+
+//générer les miniatures dans le grid
+const gridThumbnail = document.querySelector(".grid_thumbnail")
+for (let i = 0; i< projects.length; i++) {
+    const gridElement = document.createElement("div");
+    const imgElement = document.createElement("img");
+    imgElement.src = projects[i].imageUrl;
+    const trashCan = document.createElement("i")
+    trashCan.classList.add("fa-regular", "fa-trash-can");
+    gridThumbnail.appendChild(gridElement);
+    gridElement.appendChild(imgElement);
+    gridElement.appendChild(trashCan)
+};

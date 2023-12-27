@@ -291,3 +291,15 @@ footer nav ul {
 	padding: 3px;
 	margin-bottom: 10px;
 }
+
+.grid_thumbnail {
+	margin: 45px 80px;
+	display: grid;
+	gap: 10px;
+  	grid-template-columns: repeat(5, 1fr);
+}
+
+.grid_thumbnail img {
+	width: 100%;
+	object-fit: cover;
+}
