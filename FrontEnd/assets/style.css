@@ -284,8 +284,10 @@ footer nav ul {
     display: flex !important;
 }
 
-#closeModal {
+.close_modal {
+	width: fit-content;
 	display: block;
-	text-align: center;
-	background-color: red;
+	margin-left: auto;
+	padding: 3px;
+	margin-bottom: 10px;
 }

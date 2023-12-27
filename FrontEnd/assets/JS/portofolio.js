@@ -71,6 +71,7 @@ btnAll.addEventListener("click", () =>{
     });
 });
 
+//ajout de la fenêtre modal
 const popupBackground = document.querySelector(".popupBackground");
 const btnOpenModal = document.querySelector(".btnOpenModal");
 const iconCloseModal = document.querySelector(".close_modal");
