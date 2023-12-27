@@ -73,15 +73,12 @@ btnAll.addEventListener("click", () =>{
 
 const popupBackground = document.querySelector(".popupBackground");
 const btnOpenModal = document.querySelector(".btnOpenModal");
-//const btnCloseModal = document.getElementById("close_modal");
+const iconCloseModal = document.querySelector(".close_modal");
 
 btnOpenModal.addEventListener("click", () => {
     popupBackground.style.display = "block";
-    console.log("clique");
 });
 
-/*
-btnCloseModal.addEventListener("click", () => {
+iconCloseModal.addEventListener("click", () => {
     popupBackground.style.display = "none";
 });
-*/
