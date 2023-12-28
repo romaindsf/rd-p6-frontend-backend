@@ -14,7 +14,7 @@ async function attemptLogIn(event) {    //async pour utiliser await fetch dans l
             headers: {"Content-Type": "application/json"},
         });                         //écriture de la requête, deux arguments (fetch,{method, body, headers})
         if(attemptLogIn.status === 200) {   //si la requête est un succès :
-            window.location.href = "/FrontEnd/index.html";  // rediriger vers la page d'acceuil
+            window.location.href = "../index.html";  // rediriger vers la page d'acceuil
             window.localStorage.setItem("mesLogs", logInfo) //sauvergarde des bons identifiants
         } else {
             console.log("identifiant ou mot de passe incorrecte")
